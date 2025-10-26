@@ -11,8 +11,7 @@
             <Label text="Marathon Simulator"
                    style="-fx-font-size: 18px; -fx-font-weight: bold;" />
 
-            <Label fx:id="runnerLabel" text="Runner: " />
-            <Label fx:id="distanceLabel" text="Distance: " />
+         
 
             <HBox spacing="10" alignment="CENTER">
                 <Button fx:id="playPauseButton" text="Play" />
@@ -22,3 +21,4 @@
     </center>
 
 </BorderPane>
+
