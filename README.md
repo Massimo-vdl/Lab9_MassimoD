@@ -11,7 +11,7 @@ Implement an **MVC-based JavaFX GUI application** for a **Marathon Simulator** t
 - The application should begin by displaying a **slideshow of 4 to 5 marathoners** along with a **greeting message**.
 - Use **JavaFX multimedia features** such as playing a **sound file** during the slideshow.
 - Each marathoner should have a **unique identity and appearance** (name, number, color, etc.).
-- For this purpose, you can **design and draw** the marathoners  of your choice using tools such as Photoshop, Paint, or any drawing application  as illustrated in the figure below.
+- For this purpose, you can **design and draw** the marathoners  of your choice using tools such as Photoshop, Paint, or any drawing application,  as illustrated in the figure below.
 
 - The slideshow should:
 
