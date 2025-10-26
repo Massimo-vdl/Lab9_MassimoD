@@ -16,12 +16,6 @@ public class MarathonController {
     private Button playPauseButton;
 
     @FXML
-    private Button speedUpButton;
-
-    @FXML
-    private Button speedDownButton;
-
-    @FXML
     private Button resetButton;
 
     @FXML
@@ -31,3 +25,4 @@ public class MarathonController {
 
     // TODO: Add methods to handle button actions
 }
+
