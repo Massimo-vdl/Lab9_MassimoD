@@ -16,11 +16,10 @@ Implement an **MVC-based JavaFX GUI application** for a **Marathon Simulator** t
 - The slideshow should:
 
   - Display **one marathoner’s picture at a time**.
-  - Use **appropriate colors, shapes, and sizes**.
   - Have a **reasonable delay** between images.
   - Automatically display the **next marathoner’s picture** after the delay.
  
-  - ![Marathon Graph](images/marathoner.png)
+   ![Marathon Graph](images/marathoner.png)
 
 ### 2. Display the Marathon Simulation
 
@@ -46,13 +45,13 @@ When the race ends:
 
 In the **bottom-left area**, provide control buttons for managing the simulation:
 
-| Button | Description |
+| Button    | Description                                 |
 
-| **Start** | Starts or resumes the marathon simulation. |
+| **Start** | Starts or resumes the marathon simulation.  |
 
 | **Pause** | Pauses the ongoing simulation. |
 
-| **Exit** | Closes the application. |
+| **Exit**  | Closes the application. |
 
 You may add additional buttons or controls as needed.
 
