@@ -8,11 +8,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assignment2_massimo.FXMLController">
    <children>
       <BorderPane fx:id="borderPane" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <center>
@@ -20,14 +18,6 @@
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
-               <children>
-                  <Line fx:id="startLine" endX="-100.0" endY="188.0" layoutX="155.0" layoutY="60.0" startX="-100.0" startY="-56.0" strokeWidth="5.0" />
-                  <Text fx:id="startLineText" layoutX="-20.0" layoutY="130.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="START" wrappingWidth="97.32110595703125">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Text>
-               </children>
             </Pane>
          </center>
          <bottom>
