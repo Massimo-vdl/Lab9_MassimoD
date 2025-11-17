@@ -19,6 +19,8 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -52,12 +54,14 @@ public class Assignment2_Massimo extends Application {
         BorderPane slideshowPane = new BorderPane();
         Label lblImage = new Label();
         lblImage.setAlignment(Pos.CENTER);
+        //background audio 
+        Media media = new Media(getClass().getResource("/assignment2_massimo/images/song.mp3").toExternalForm());
+        MediaPlayer backgroundSong = new MediaPlayer(media);
+        backgroundSong.setCycleCount(MediaPlayer.INDEFINITE);
 
         Image[] images = new Image[5];
         for (int i = 0; i < 5; i++) {
-            images[i] = new Image(
-                    getClass().getResource("/assignment2_massimo/images/marathoner" + (i + 1) + ".jpg").toExternalForm()
-            );
+            images[i] = new Image(getClass().getResource("/assignment2_massimo/images/marathoner" + (i + 1) + ".jpg").toExternalForm());
         }
 
         //Display names of runners
@@ -133,7 +137,8 @@ public class Assignment2_Massimo extends Application {
 
         // Start button action
         startButton1.setOnAction(e -> {
-            stage.setScene(slideshowScene); // go to Scene 2
+            stage.setScene(slideshowScene);// go to Scene 2
+            backgroundSong.play();
             timeline.play();                // begin slideshow
         });
 
