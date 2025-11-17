@@ -5,12 +5,21 @@
 package assignment2_massimo;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -40,24 +49,107 @@ public class FXMLController implements Initializable {
     @FXML
     private Pane racePane;
 
+    private boolean isPaused = false;
+
+    private boolean raceFinished = false;
+
+    private double finishLine = 750;
+
+    private List<Runner> runners = new ArrayList<>();
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        //setting the baclground for the race area
+        Image background = new Image(getClass().getResource("/assignment2_massimo/images/Marathon.png").toExternalForm());
+
+        BackgroundImage backgroundImage = new BackgroundImage(
+                background,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                new BackgroundSize(
+                        BackgroundSize.AUTO,
+                        BackgroundSize.AUTO,
+                        false, false, true, true
+                )
+        );
+
+        racePane.setBackground(new Background(backgroundImage));
+    }
 
     @FXML
     private void startButtonPressed(ActionEvent event) {
+        racePane.getChildren().clear();
+        runners.clear();
+        // reset for new race
+        raceFinished = false;
+        marathonStatusLabel.setText("The Race Has Begun");
+
+        for (int i = 0; i < 5; i++) {
+            final int runnerNumber = i + 1;
+            Runner runner = new Runner();
+            runner.setNumber(runnerNumber);
+            double laneY = 5 + i * 85;
+            runner.setY(laneY);
+
+            // Add a callback to announce winner
+            runner.setOnFinish(r -> {
+                if (!raceFinished) {
+                    raceFinished = true;
+                    marathonStatusLabel.setText("The Race Has Ended");
+                    //creating a pop out screne to display the winner
+                    javafx.stage.Stage winnerStage = new javafx.stage.Stage();
+                    javafx.scene.layout.StackPane pane = new javafx.scene.layout.StackPane();
+                    javafx.scene.control.Label winnerLabel = new javafx.scene.control.Label(
+                            "Runner " + runner.getNumber() + " is the winner!");
+                    winnerLabel.setStyle("-fx-font-size: 24px; -fx-text-fill: green; -fx-font-weight: bold;");
+                    pane.getChildren().add(winnerLabel);
+
+                    javafx.scene.Scene scene = new javafx.scene.Scene(pane, 400, 150);
+                    winnerStage.setScene(scene);
+                    winnerStage.setTitle("! Marathon Winner !");
+                    winnerStage.show();
+                }
+            });
+
+            runners.add(runner);
+            racePane.getChildren().add(runner.getImageView());
+            runner.startMoving(racePane, finishLine);
+        }
     }
 
     @FXML
     private void pauseButtonPressed(ActionEvent event) {
+        if (!isPaused) {
+            // Pause all runners
+            for (Runner runner : runners) {
+                runner.stop();
+            }
+
+            pauseButton.setText("Resume");
+            isPaused = true;
+        } else {
+            // Resume all runners
+            for (Runner runner : runners) {
+                runner.startMoving(racePane, finishLine);
+            }
+
+            pauseButton.setText("Pause");
+            isPaused = false;
+        }
     }
 
     @FXML
     private void exitButtonPressed(ActionEvent event) {
+        // Stop all runners
+        for (Runner runner : runners) {
+            runner.stop();
+        }
+
+        // Close the application
+        Platform.exit();
     }
-    
 }

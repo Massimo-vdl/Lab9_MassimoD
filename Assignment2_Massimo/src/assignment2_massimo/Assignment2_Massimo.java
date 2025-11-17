@@ -39,6 +39,7 @@ public class Assignment2_Massimo extends Application {
     private double speed = 1.5; // seconds per image
     private Timeline timeline;
     private boolean isPlaying = false;
+    private MediaPlayer backgroundSong;
 
     public static void main(String[] args) {
         launch(args);
@@ -46,19 +47,20 @@ public class Assignment2_Massimo extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        //loading the fxml scene 
+        //Loading the fxml scene 
         Parent fxmlRoot = FXMLLoader.load(getClass().getResource("FXML.fxml"));
         Scene fxmlScene = new Scene(fxmlRoot);
 
-        // scene 2 Slideshow Scene
+        //Scene 2 Slideshow Scene
         BorderPane slideshowPane = new BorderPane();
         Label lblImage = new Label();
         lblImage.setAlignment(Pos.CENTER);
-        //background audio 
+        //Background audio 
         Media media = new Media(getClass().getResource("/assignment2_massimo/images/song.mp3").toExternalForm());
-        MediaPlayer backgroundSong = new MediaPlayer(media);
+        backgroundSong = new MediaPlayer(media);
         backgroundSong.setCycleCount(MediaPlayer.INDEFINITE);
 
+        //Initializing runner images
         Image[] images = new Image[5];
         for (int i = 0; i < 5; i++) {
             images[i] = new Image(getClass().getResource("/assignment2_massimo/images/marathoner" + (i + 1) + ".jpg").toExternalForm());
@@ -73,11 +75,13 @@ public class Assignment2_Massimo extends Application {
             "Marathoner 5"
         };
 
+        //Setting image views 
         ImageView imageView = new ImageView(images[currentIndex]);
         imageView.setFitWidth(400);
         imageView.setPreserveRatio(true);
         lblImage.setGraphic(imageView);
 
+        //Marathoner name label displays
         Label nameLabel = new Label(names[currentIndex]);
         nameLabel.setFont(new Font(24));
         nameLabel.setTextFill(Color.BLACK);
@@ -93,18 +97,18 @@ public class Assignment2_Massimo extends Application {
             imageView.setImage(images[currentIndex]);
             nameLabel.setText(names[currentIndex]);
         }));
-
-        timeline.setCycleCount(5); // show all 5 images once
+        // Show all 5 images once
+        timeline.setCycleCount(5); 
 
         // When slideshow finishes Go to FXML Scene
         timeline.setOnFinished(e -> {
             stage.setScene(fxmlScene);
         });
 
-        // start screen scene
+        // Start screen scene layout
         Pane startPane = new Pane();
         startPane.setPrefSize(800, 600);
-
+        
         Label startLabel = new Label("Marathon Simulator");
         startLabel.setFont(new Font(32));
         startLabel.setTextFill(Color.WHITE);
@@ -138,14 +142,14 @@ public class Assignment2_Massimo extends Application {
         // Start button action
         startButton1.setOnAction(e -> {
             stage.setScene(slideshowScene);// go to Scene 2
-            backgroundSong.play();
+            backgroundSong.play();          // play the background song 
             timeline.play();                // begin slideshow
         });
 
         startPane.getChildren().addAll(startLabel, startButton1);
         Scene startScene = new Scene(startPane);
 
-        // display start scene
+        // Display start scene
         stage.setScene(startScene);
         stage.show();
     }
