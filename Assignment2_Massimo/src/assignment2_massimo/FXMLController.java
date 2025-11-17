@@ -12,6 +12,8 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -101,17 +103,14 @@ public class FXMLController implements Initializable {
                     raceFinished = true;
                     marathonStatusLabel.setText("The Race Has Ended");
                     // Creating a pop out screne to display the winner
-                    javafx.stage.Stage winnerStage = new javafx.stage.Stage();
-                    javafx.scene.layout.StackPane pane = new javafx.scene.layout.StackPane();
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setHeaderText("Race Winner");
                     javafx.scene.control.Label winnerLabel = new javafx.scene.control.Label(
                             "Runner " + runner.getNumber() + " is the winner!");
                     winnerLabel.setStyle("-fx-font-size: 24px; -fx-text-fill: green; -fx-font-weight: bold;");
-                    pane.getChildren().add(winnerLabel);
-
-                    javafx.scene.Scene scene = new javafx.scene.Scene(pane, 400, 150);
-                    winnerStage.setScene(scene);
-                    winnerStage.setTitle("! Marathon Winner !");
-                    winnerStage.show();
+                    alert.setGraphic(winnerLabel);
+                    alert.setTitle("! Marathon Winner !");
+                    alert.show();
                 }
             });
 
