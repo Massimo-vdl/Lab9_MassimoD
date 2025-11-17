@@ -84,9 +84,7 @@ public class Assignment2_Massimo extends Application {
             stage.setScene(fxmlScene);
         });
 
-        // ======================================
-        // SCENE 1 — Start Screen
-        // ======================================
+        // start screen scene
         Pane startPane = new Pane();
         startPane.setPrefSize(800, 600);
 
