@@ -34,7 +34,7 @@ public class Assignment2_Massimo extends Application {
      * @param args the command line arguments
      */
     private int currentIndex = 0;
-    private double speed = 2.0; // seconds per image
+    private double speed = 1.5; // seconds per image
     private Timeline timeline;
     private boolean isPlaying = false;
 
@@ -56,25 +56,38 @@ public class Assignment2_Massimo extends Application {
         Image[] images = new Image[5];
         for (int i = 0; i < 5; i++) {
             images[i] = new Image(
-                    getClass().getResource("/assignment2_massimo/images/marathoner" + (i + 1) + ".png").toExternalForm()
+                    getClass().getResource("/assignment2_massimo/images/marathoner" + (i + 1) + ".jpg").toExternalForm()
             );
         }
 
+        //Display names of runners
+        String[] names = {
+            "Marathoner 1",
+            "Marathoner 2",
+            "Marathoner 3",
+            "Marathoner 4",
+            "Marathoner 5"
+        };
+
         ImageView imageView = new ImageView(images[currentIndex]);
-        imageView.setFitWidth(200);
+        imageView.setFitWidth(400);
         imageView.setPreserveRatio(true);
         lblImage.setGraphic(imageView);
 
-        VBox centerBox = new VBox(lblImage);
+        Label nameLabel = new Label(names[currentIndex]);
+        nameLabel.setFont(new Font(24));
+        nameLabel.setTextFill(Color.BLACK);
+
+        VBox centerBox = new VBox(20, lblImage, nameLabel);
         centerBox.setAlignment(Pos.CENTER);
         slideshowPane.setCenter(centerBox);
-
         Scene slideshowScene = new Scene(slideshowPane, 800, 600);
 
         // Timeline runs once, then switches scenes
         timeline = new Timeline(new KeyFrame(Duration.seconds(speed), e -> {
             currentIndex = (currentIndex + 1) % images.length;
             imageView.setImage(images[currentIndex]);
+            nameLabel.setText(names[currentIndex]);
         }));
 
         timeline.setCycleCount(5); // show all 5 images once
