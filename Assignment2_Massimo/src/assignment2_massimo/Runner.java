@@ -19,7 +19,7 @@ public class Runner {
     double finshLine = 550;
     private String name;
     private int number;
-    private double x = 100;
+    private double x;
     private double y;
     private double speed;
     private ImageView imageView;
@@ -29,7 +29,7 @@ public class Runner {
     private static final Random rand = new Random();
 
     public Runner() {
-        this("Unnamed", 0, 0, 0, randomSpeed(), "/assignment2_massimo/images/running.gif");
+        this("Unnamed", 0, 75, 0, randomSpeed(), "/assignment2_massimo/images/running.gif");
     }
 
     public Runner(String name, int number, double x, double y, String gifPath) {
