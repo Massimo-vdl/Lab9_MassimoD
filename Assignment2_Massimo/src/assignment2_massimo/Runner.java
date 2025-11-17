@@ -15,7 +15,6 @@ import javafx.util.Duration;
  */
 public class Runner {
 
-    double startline = 60;
     double finshLine = 550;
     private String name;
     private int number;
@@ -24,11 +23,11 @@ public class Runner {
     private double speed;
     private ImageView imageView;
     private Timeline timeline;
-    private Consumer<Runner> onFinish;
+    private Consumer<Runner> onFinish; //to detect when a runner has finished
 
     private static final Random rand = new Random();
 
-    public Runner() {
+    public Runner() { //preset x to align runners with the start line
         this("Unnamed", 0, 75, 0, randomSpeed(), "/assignment2_massimo/images/running.gif");
     }
 
@@ -55,24 +54,6 @@ public class Runner {
     private static double randomSpeed() {
         // generated random speed
         return 5.0 + rand.nextDouble() * 100.0;
-    }
-
-    /**
-     * Reset runner to starting position.
-     */
-    public void reset(double startLine) {
-        this.x = startLine;
-    }
-
-    /**
-     * Check if runner has crossed finish line.
-     */
-    public boolean hasFinished(double finishLine) {
-        return x >= finishLine;
-    }
-
-    public ImageView getImageView() {
-        return imageView;
     }
 
     /**
@@ -127,8 +108,8 @@ public class Runner {
             imageView.setY(y);
         }
     }
-    
-    public void setNumber(int number){
+
+    public void setNumber(int number) {
         this.number = number;
     }
 
@@ -148,4 +129,7 @@ public class Runner {
         return number;
     }
 
+    public ImageView getImageView() {
+        return imageView;
+    }
 }

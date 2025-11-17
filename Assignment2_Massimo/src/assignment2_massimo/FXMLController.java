@@ -84,7 +84,7 @@ public class FXMLController implements Initializable {
     private void startButtonPressed(ActionEvent event) {
         racePane.getChildren().clear();
         runners.clear();
-        // reset for new race
+        // Reset for new race when start is pressed
         raceFinished = false;
         marathonStatusLabel.setText("The Race Has Begun");
 
@@ -100,7 +100,7 @@ public class FXMLController implements Initializable {
                 if (!raceFinished) {
                     raceFinished = true;
                     marathonStatusLabel.setText("The Race Has Ended");
-                    //creating a pop out screne to display the winner
+                    // Creating a pop out screne to display the winner
                     javafx.stage.Stage winnerStage = new javafx.stage.Stage();
                     javafx.scene.layout.StackPane pane = new javafx.scene.layout.StackPane();
                     javafx.scene.control.Label winnerLabel = new javafx.scene.control.Label(

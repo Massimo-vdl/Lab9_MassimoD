@@ -87,6 +87,7 @@ public class Assignment2_Massimo extends Application {
         nameLabel.setStyle("-fx-font-weight: bold;");
         nameLabel.setTextFill(Color.WHITE);
 
+        //Runner image display Vbox
         VBox centerBox = new VBox(20, lblImage, nameLabel);
         centerBox.setAlignment(Pos.CENTER);
         slideshowPane.setCenter(centerBox);
@@ -99,7 +100,7 @@ public class Assignment2_Massimo extends Application {
             nameLabel.setText(names[currentIndex]);
         }));
         // Show all 5 images once
-        timeline.setCycleCount(5); 
+        timeline.setCycleCount(5);
 
         // When slideshow finishes Go to FXML Scene
         timeline.setOnFinished(e -> {
@@ -109,7 +110,6 @@ public class Assignment2_Massimo extends Application {
         // Start screen scene layout
         Pane startPane = new Pane();
         startPane.setPrefSize(800, 600);
-        
         Label startLabel = new Label("Marathon Simulator");
         startLabel.setFont(new Font(32));
         startLabel.setTextFill(Color.WHITE);
@@ -118,7 +118,8 @@ public class Assignment2_Massimo extends Application {
         startLabel.setLayoutY(40);
 
         Button startButton1 = new Button("Start");
-        startButton1.setFont(new Font(18));
+        startButton1.setFont(new Font(22));
+        //centering start button
         startButton1.layoutXProperty().bind(startPane.widthProperty().subtract(startButton1.widthProperty()).divide(2));
         startButton1.layoutYProperty().bind(startPane.heightProperty().subtract(startButton1.heightProperty()).divide(2));
 
@@ -137,6 +138,7 @@ public class Assignment2_Massimo extends Application {
                         true,
                         true)
         );
+        //setting the background image in both scenes
         startPane.setBackground(new Background(backgroundImage));
         slideshowPane.setBackground(new Background(backgroundImage));
 
