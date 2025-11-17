@@ -53,7 +53,7 @@ public class Runner {
     }
 
     private static double randomSpeed() {
-        // Example: speed between 2.0 and 5.0
+        // generated random speed
         return 5.0 + rand.nextDouble() * 100.0;
     }
 

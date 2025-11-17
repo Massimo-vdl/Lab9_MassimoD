@@ -68,11 +68,11 @@ public class Assignment2_Massimo extends Application {
 
         //Display names of runners
         String[] names = {
-            "Marathoner 1",
-            "Marathoner 2",
-            "Marathoner 3",
-            "Marathoner 4",
-            "Marathoner 5"
+            "Runner 1",
+            "Runner 2",
+            "Runner 3",
+            "Runner 4",
+            "Runner 5"
         };
 
         //Setting image views 
@@ -83,8 +83,9 @@ public class Assignment2_Massimo extends Application {
 
         //Marathoner name label displays
         Label nameLabel = new Label(names[currentIndex]);
-        nameLabel.setFont(new Font(24));
-        nameLabel.setTextFill(Color.BLACK);
+        nameLabel.setFont(new Font(28));
+        nameLabel.setStyle("-fx-font-weight: bold;");
+        nameLabel.setTextFill(Color.WHITE);
 
         VBox centerBox = new VBox(20, lblImage, nameLabel);
         centerBox.setAlignment(Pos.CENTER);
