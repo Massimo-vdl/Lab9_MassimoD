@@ -92,7 +92,7 @@ public class Assignment2_Massimo extends Application {
 
         timeline.setCycleCount(5); // show all 5 images once
 
-        // When slideshow finishes → Go to FXML Scene
+        // When slideshow finishes Go to FXML Scene
         timeline.setOnFinished(e -> {
             stage.setScene(fxmlScene);
         });
